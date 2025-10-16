@@ -4,7 +4,7 @@
     padding: 10px;
     height: 100%;
   background-image: url(jiit_banner.webp);
-    height: 140vh;
+    height: 120vh;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -15,6 +15,10 @@
   .new-sectionnn{
     margin-top: 200px;
   }
+  .like{
+    
+  }
+ 
 }
 
 @media (min-width: 576px) and (max-width: 767.98px) {
