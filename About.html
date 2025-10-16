@@ -1,120 +1,512 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Download Brochure Popup</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <style>
-    /* Popup animation */
-    .modal.fade .modal-dialog {
-      transform: translateY(-50px);
-      opacity: 0;
-      transition: all 0.4s ease-in-out;
-    }
-    .modal.show .modal-dialog {
-      transform: translateY(0);
-      opacity: 1;
-    }
-
-    .modal-content {
-      border-radius: 15px;
-      border: none;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-    }
-
-    .modal .form-control, .form-select {
-      border-radius: 10px;
-      padding: 12px;
-    }
-
-    .modal .btn-download {
-      background-color: #e58a5c;
-      color: #fff;
-      font-weight: 600;
-      border-radius: 50px;
-      padding: 10px 25px;
-      border: none;
-      transition: 0.3s;
-    }
-    .modal .btn-download:hover {
-      background-color: #d97a49;
-      transform: scale(1.03);
-    }
-
-    .modal label {
-      font-weight: 500;
-      margin-top: 10px;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Manipal - Master of Business Administration</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1a3a8f;
+            --secondary: #f8a01a;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --success: #28a745;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        /* Header Styles */
+        .navbar {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 15px 0;
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 1.5rem;
+        }
+        
+        .nav-link {
+            font-weight: 500;
+            color: var(--dark);
+            margin: 0 10px;
+            transition: color 0.3s;
+        }
+        
+        .nav-link:hover {
+            color: var(--primary);
+        }
+        
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(135deg, var(--primary) 0%, #2a4bb0 100%);
+            color: white;
+            padding: 80px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiB2aWV3Qm94PSIwIDAgMTAwMCAxMDAwIiBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxyZWN0IHdpZHRoPSIxMDAwIiBoZWlnaHQ9IjEwMDAiIGZpbGw9IiMxYTNhOGYiPjwvcmVjdD48cGF0aCBkPSJNMCA1MDBMMTAwMCA1MDBMMTAwMCA3MDBMMCA3MDBaIiBmaWxsPSIjMjY0MWI1IiBmaWxsLW9wYWNpdHk9IjAuNSI+PC9wYXRoPjxwYXRoIGQ9Ik0wIDMwMEwxMDAwIDMwMEwxMDAwIDUwMEwwIDUwMFoiIGZpbGw9IiMzMjQ4YmEiIGZpbGwtb3BhY2l0eT0iMC4zIj48L3BhdGg+PC9zdmc+');
+            opacity: 0.1;
+        }
+        
+        .hero-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            animation: fadeInUp 1s ease;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        /* Features Section */
+        .features-section {
+            padding: 60px 0;
+            background-color: var(--light);
+        }
+        
+        .feature-item {
+            text-align: center;
+            padding: 20px;
+            margin-bottom: 20px;
+            transition: transform 0.3s;
+        }
+        
+        .feature-item:hover {
+            transform: translateY(-10px);
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        /* Form Section */
+        .form-section {
+            padding: 80px 0;
+        }
+        
+        .form-container {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            padding: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .form-title {
+            color: var(--primary);
+            font-weight: 700;
+            margin-bottom: 30px;
+            font-size: 1.8rem;
+        }
+        
+        .form-control {
+            padding: 12px 15px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+        
+        .form-control:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 0.2rem rgba(26, 58, 143, 0.25);
+        }
+        
+        .btn-primary {
+            background-color: var(--primary);
+            border-color: var(--primary);
+            padding: 12px 30px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .btn-primary:hover {
+            background-color: #152b70;
+            border-color: #152b70;
+            transform: translateY(-2px);
+        }
+        
+        .checkbox-label {
+            font-size: 0.9rem;
+            margin-top: 10px;
+        }
+        
+        /* Countdown Section */
+        .countdown-section {
+            background-color: var(--secondary);
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+        
+        .countdown-text {
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin: 0;
+        }
+        
+        .countdown-timer {
+            font-weight: 700;
+            font-size: 1.3rem;
+        }
+        
+        /* Footer */
+        .footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 40px 0 20px;
+        }
+        
+        .footer-heading {
+            font-weight: 600;
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+        
+        .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #adb5bd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+        }
+        
+        .copyright {
+            border-top: 1px solid #444;
+            padding-top: 20px;
+            margin-top: 30px;
+            text-align: center;
+            color: #adb5bd;
+            font-size: 0.9rem;
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .animate-fadeIn {
+            animation: fadeInUp 0.8s ease both;
+        }
+        
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .form-container {
+                padding: 30px 20px;
+            }
+            
+            .feature-item {
+                margin-bottom: 30px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero-title {
+                font-size: 1.8rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .form-title {
+                font-size: 1.5rem;
+            }
+            
+            .countdown-text {
+                font-size: 1rem;
+            }
+            
+            .countdown-timer {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
 </head>
 <body>
-
-<!-- Button to Open Popup -->
-<div class="text-center mt-5">
-  <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#brochureModal">Open Form</button>
-</div>
-
-<!-- Modal -->
-<div class="modal fade" id="brochureModal" tabindex="-1" aria-labelledby="brochureLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg modal-dialog-centered">
-    <div class="modal-content p-4">
-      <div class="modal-header border-0">
-        <h5 class="modal-title w-100 text-center fw-semibold" id="brochureLabel">
-          Please share your details to download the brochure
-        </h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-      </div>
-
-      <div class="modal-body">
-        <form>
-          <div class="row g-3">
-            <div class="col-md-4">
-              <label for="fullName" class="form-label">Full name *</label>
-              <input type="text" class="form-control" id="fullName" placeholder="Enter your full name" required>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">Online Manipal</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Programs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Student Corner</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Admission</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Recognition</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contact Us</a>
+                    </li>
+                </ul>
             </div>
-            <div class="col-md-4">
-              <label for="email" class="form-label">Email address *</label>
-              <input type="email" class="form-control" id="email" placeholder="Enter your email" required>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 hero-content">
+                    <h1 class="hero-title">Master of Business Administration</h1>
+                    <p class="hero-subtitle">Online MBA courses from Manipal Universities</p>
+                    <div class="mt-4">
+                        <a href="#" class="btn btn-light btn-lg me-3">Download Brochure</a>
+                        <a href="#" class="btn btn-outline-light btn-lg">Get a Free Career Counselling Session</a>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <!-- Form will be placed here in the next section -->
+                </div>
             </div>
-            <div class="col-md-4">
-              <label for="mobile" class="form-label">Mobile number *</label>
-              <div class="input-group">
-                <span class="input-group-text">+91</span>
-                <input type="tel" class="form-control" id="mobile" placeholder="Enter your mobile number" required>
-              </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 feature-item animate-fadeIn">
+                    <div class="feature-icon">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <h3>UGC-Entitled & NAAC A+ Accredited</h3>
+                    <p>Our programs are recognized by UGC and accredited with the highest grade by NAAC.</p>
+                </div>
+                <div class="col-md-4 feature-item animate-fadeIn" style="animation-delay: 0.2s">
+                    <div class="feature-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Trusted by 30,000+ Learners</h3>
+                    <p>Join a community of over 30,000 learners who have transformed their careers with us.</p>
+                </div>
+                <div class="col-md-4 feature-item animate-fadeIn" style="animation-delay: 0.4s">
+                    <div class="feature-icon">
+                        <i class="fas fa-university"></i>
+                    </div>
+                    <h3>From India's Best Private Universities</h3>
+                    <p>Learn from prestigious institutions known for academic excellence and industry relevance.</p>
+                </div>
             </div>
-          </div>
+        </div>
+    </section>
 
-          <div class="row mt-3">
-            <div class="col-md-12">
-              <label for="course" class="form-label">Course *</label>
-              <select class="form-select" id="course" required>
-                <option selected disabled>Select course*</option>
-                <option>BCA</option>
-                <option>MBA</option>
-                <option>MCA</option>
-                <option>BBA</option>
-              </select>
+    <!-- Form Section -->
+    <section class="form-section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="form-container animate-fadeIn">
+                        <h2 class="form-title text-center">Get a Free Career Counselling Session</h2>
+                        <form>
+                            <div class="mb-3">
+                                <input type="text" class="form-control" placeholder="Enter your full name" required>
+                            </div>
+                            <div class="mb-3">
+                                <input type="email" class="form-control" placeholder="Enter your email" required>
+                            </div>
+                            <div class="mb-3">
+                                <div class="input-group">
+                                    <span class="input-group-text">+91</span>
+                                    <input type="tel" class="form-control" placeholder="Enter your mobile number" required>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <select class="form-control" required>
+                                    <option value="" disabled selected>Select course*</option>
+                                    <option value="mba">Master of Business Administration</option>
+                                    <option value="mca">Master of Computer Applications</option>
+                                    <option value="msc">MSc Data Science</option>
+                                </select>
+                            </div>
+                            <div class="mb-3 form-check">
+                                <input type="checkbox" class="form-check-input" id="consentCheck">
+                                <label class="form-check-label checkbox-label" for="consentCheck">
+                                    Authorize Online Manipal and its associates to contact me with updates/notifications via email, SMS, WhatsApp and voice call. This consent will override any registration for DNC/NDNC.
+                                </label>
+                            </div>
+                            <div class="d-grid">
+                                <button type="submit" class="btn btn-primary btn-lg">Request Call Back</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
-          </div>
+        </div>
+    </section>
 
-          <div class="form-check mt-3">
-            <input class="form-check-input" type="checkbox" id="authorize" checked>
-            <label class="form-check-label" for="authorize">
-              I authorize Online Manipal and its associates to contact me with updates notifications via email, SMS, WhatsApp, and voice call. This consent will override any registration for DNC / NDNC.
-            </label>
-          </div>
+    <!-- Countdown Section -->
+    <section class="countdown-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <p class="countdown-text">Application closes in <span class="countdown-timer">0d 23h 31m</span> | <span class="countdown-timer">92%</span> Seats filled!</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-          <div class="text-center mt-4">
-            <button type="submit" class="btn btn-download">Download Now</button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-</div>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <h5 class="footer-heading">Online Manipal</h5>
+                    <p>Providing quality online education from prestigious Manipal institutions to learners across the globe.</p>
+                </div>
+                <div class="col-md-2 mb-4">
+                    <h5 class="footer-heading">Quick Links</h5>
+                    <ul class="footer-links">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Programs</a></li>
+                        <li><a href="#">Admission</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <h5 class="footer-heading">Student Support</h5>
+                    <ul class="footer-links">
+                        <li><a href="#">Student Corner</a></li>
+                        <li><a href="#">FAQs</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Help Center</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <h5 class="footer-heading">Connect With Us</h5>
+                    <div class="social-links mt-3">
+                        <a href="#" class="text-light me-3"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-light me-3"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-light me-3"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="text-light me-3"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-light"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <p class="copyright">© 2023 Online Manipal. All Rights Reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Bootstrap JS with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Simple animation on scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add animation class to elements when they come into view
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate-fadeIn');
+                    }
+                });
+            }, observerOptions);
+            
+            // Observe elements that should animate on scroll
+            const animatedElements = document.querySelectorAll('.feature-item, .form-container');
+            animatedElements.forEach(el => {
+                observer.observe(el);
+            });
+            
+            // Countdown timer (static for demo)
+            // In a real implementation, you would calculate the time remaining
+            function updateCountdown() {
+                // This is a static countdown for demo purposes
+                // In a real implementation, you would calculate the actual time remaining
+                const countdownElement = document.querySelector('.countdown-timer');
+                if (countdownElement) {
+                    // For demo, we'll just keep it static
+                    countdownElement.textContent = '0d 23h 31m';
+                }
+            }
+            
+            // Initialize countdown
+            updateCountdown();
+        });
+    </script>
 </body>
 </html>

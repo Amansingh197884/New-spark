@@ -1,0 +1,82 @@
+@media (max-width: 575.98px) {
+  /* styles for phones */
+  .Section-high{
+    padding: 10px;
+    height: 100%;
+  background-image: url(jiit_banner.webp);
+    height: 140vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  
+  
+  }
+ 
+  .new-sectionnn{
+    margin-top: 200px;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 767.98px) {
+  /* styles for small devices */
+}
+
+/* Medium devices (tablets, portrait) */
+@media (min-width: 768px) and (max-width: 991.98px) {
+  /* styles for tablets */
+}
+
+/* Large devices (desktops, small laptops) */
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  /* styles for laptops */
+}
+
+/* Extra large devices (large desktops) */
+@media (min-width: 1200px) and (max-width: 1399.98px) {
+  /* styles for large desktops */
+}
+
+/* Extra-extra large devices (4K and beyond) */
+@media (min-width: 1400px) {
+  /* styles for 4K screens */
+}
+
+    @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .form-container {
+                padding: 30px 20px;
+            }
+            
+            .feature-item {
+                margin-bottom: 30px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero-title {
+                font-size: 1.8rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .form-title {
+                font-size: 1.5rem;
+            }
+            
+            .countdown-text {
+                font-size: 1rem;
+            }
+            
+            .countdown-timer {
+                font-size: 1.1rem;
+            }
+        }
